@@ -1,0 +1,124 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+enum Role {
+  BUSINESS_OWNER
+  EMPLOYEE
+  CUSTOMER
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum Rating {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  password     String
+  fullName     String
+  phone        String?
+  role         Role
+  businesses   Business[] @relation("BusinessToUser")
+  employees    Employee[] @relation("EmployeeToUser")
+  appointments Appointment[] @relation("CustomerToAppointment")
+  reviews      Review[]
+}
+
+model Business {
+  id          String   @id @default(uuid())
+  name        String
+  address     String?
+  phone       String?
+  email       String?
+  website     String?
+  description String?
+  owner       User     @relation("BusinessToUser", fields: [ownerId], references: [id])
+  ownerId     String
+  employees   Employee[] @relation("EmployeeToBusiness")
+  services    Service[]
+  appointments Appointment[]
+  reviews      Review[]
+}
+
+model Employee {
+  id           String    @id @default(uuid())
+  user         User      @relation("EmployeeToUser", fields: [userId], references: [id])
+  userId       String    @unique
+  business     Business  @relation("EmployeeToBusiness", fields: [businessId], references: [id])
+  businessId   String
+  specializations String[]
+  timeSlots    TimeSlot[]
+  appointments Appointment[] @relation("EmployeeToAppointment")
+}
+
+model Service {
+  id        String   @id @default(uuid())
+  name      String
+  duration  Int
+  price     Decimal
+  business  Business @relation(fields: [businessId], references: [id])
+  businessId String
+  appointments Appointment[]
+}
+
+model TimeSlot {
+  id            String    @id @default(uuid())
+  employee      Employee  @relation(fields: [employeeId], references: [id])
+  employeeId    String
+  date          DateTime  @db.Date // Explicitly set to Date type in the database
+  startTime     DateTime
+  endTime       DateTime
+  isBooked      Boolean   @default(false)
+  appointmentId String?
+  appointment   Appointment? @relation("AppointmentToTimeSlot", fields: [appointmentId], references: [id])
+}
+
+model Appointment {
+  id         String            @id @default(uuid())
+  business   Business          @relation(fields: [businessId], references: [id])
+  businessId String
+  employee   Employee          @relation("EmployeeToAppointment", fields: [employeeId], references: [id])
+  employeeId String
+  customer   User?             @relation("CustomerToAppointment", fields: [customerId], references: [id])
+  customerId String?
+  service    Service           @relation(fields: [serviceId], references: [id])
+  serviceId  String
+  date       DateTime          @db.Date // Explicitly set to Date type in the database
+  startTime  DateTime
+  endTime    DateTime
+  status     AppointmentStatus
+  guestName  String?
+  guestPhone String?
+  guestEmail String?
+  timeSlots  TimeSlot[]        @relation("AppointmentToTimeSlot")
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  business  Business @relation(fields: [businessId], references: [id])
+  businessId String
+  customer  User     @relation(fields: [customerId], references: [id])
+  customerId String
+  rating    Rating
+  comment   String?
+  createdAt DateTime @default(now())
+}
