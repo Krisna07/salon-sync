@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 interface BusinessCardProps {
@@ -21,8 +21,8 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
       href={`/business/${id}`}
       className="block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
-      <div className="relative h-48">
-        <Image src={imageUrl} alt={name} fill className="object-cover" />
+      <div className="relative ">
+        <img src={imageUrl} alt={name} fill className="object-cover" />
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{name}</h3>
