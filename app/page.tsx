@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-8">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-8 text-black">
       <h1 className="text-5xl font-bold mb-6 text-center">
         Find and Book Your Perfect Salon
       </h1>

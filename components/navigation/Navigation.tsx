@@ -13,7 +13,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-neutral-200 z-50">
+    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b text-black border-neutral-200 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-xl font-semibold">
