@@ -23,11 +23,11 @@ export async function cacheData<T>(
   }
 }
 
-export const successResponse = (data: any, status = 200) => {
+export const successResponse = <T = unknown>(data: T, status = 200) => {
   return NextResponse.json({ success: true, data }, { status });
 };
 
-export const errorResponse = (error: any, status = 500) => {
-  const message = error instanceof Error ? error.message : error;
+export const errorResponse = (error: unknown, status = 500) => {
+  const message = error instanceof Error ? error.message : String(error);
   return NextResponse.json({ success: false, error: message }, { status });
 };

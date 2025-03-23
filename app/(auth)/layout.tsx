@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-inter grid place-content-center`}>{children}</body>
+      <body className={`grid place-content-center`}>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

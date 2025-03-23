@@ -1,4 +1,3 @@
-"use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -7,9 +6,9 @@ const AuthPage: React.FC = () => {
 
   useEffect(() => {
     route.push("/auth/signin");
-  }, []);
+  }, [route]);
 
-  return <></>;
+  return null;
 };
 
 export default AuthPage;

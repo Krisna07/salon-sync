@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} `}>
+      <body className="min-h-screen bg-background">
         <Navigation />
         <main>{children}</main>
       </body>
