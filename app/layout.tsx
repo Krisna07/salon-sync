@@ -20,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} font-sans bg-neutral-50`}>
+      <body className={`${geist.variable} `}>
         <Navigation />
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

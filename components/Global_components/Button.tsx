@@ -12,13 +12,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center focus:outline-none transition-colors duration-200 rounded-md leading-4";
+  "inline-flex font-sans items-center justify-center focus:outline-none transition-colors duration-200 rounded-md font-semibold shadow-sm disabled:opacity-50 disabled:cursor-not-allowed";
 
 const variantStyles = {
-  primary: "bg-primary-700 text-light hover:bg-primary-900 ",
-  secondary: "bg-secondary-500 text-white hover:bg-secondary-600 ",
+  primary: "bg-primary text-light hover:bg-secondary hover:text-primary ",
+  secondary: "bg-secondary text-white hover:bg-secondary-600 ",
   danger: "bg-red-500 text-white hover:bg-red-600 ",
-  accent: "bg-accent-500 text-white hover:bg-accent-600 ",
+  accent: "bg-accent text-white hover:bg-accent-600 ",
 };
 
 const sizeStyles = {

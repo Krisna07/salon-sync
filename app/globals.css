@@ -6,19 +6,28 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-geist: var(--font-geist);
+  --primary: #2b2b2b;
+  --secondary: #fcf5f8;
+  --accent: #34d4b2e3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #e0e0e0;
   }
+}
+* {
+  font-family: var(--font-geist);
+  /* margin: 0 auto; */
+  padding: 0;
+  box-sizing: border-box;
+  /* line-height: 100%; */
 }
 
 body {
-  color: var(--background);
+  color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

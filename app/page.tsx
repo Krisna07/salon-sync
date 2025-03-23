@@ -1,21 +1,21 @@
+import Button from "@/components/Global_components/Button";
 import Link from "next/link";
-
+import { FaChevronRight } from "react-icons/fa";
 export default function Home() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-8 text-black">
-      <h1 className="text-5xl font-bold mb-6 text-center">
-        Find and Book Your Perfect Salon
-      </h1>
-      <p className="text-xl text-neutral-600 mb-8 text-center max-w-2xl">
-        Discover and book appointments with top beauty professionals in your
-        area
-      </p>
-      <Link
-        href="/discover"
-        className="bg-black text-white px-8 py-4 rounded-full hover:bg-neutral-800 transition-colors"
-      >
-        Start Booking
-      </Link>
+    <div className="h-full flex flex-col items-center justify-center ">
+      <div className="h-[50rem] flex flex-col items-center justify-center gap-4 place-items-center">
+        <h1 className="text-[40px] font-bold  text-center">
+          Find and Book Your Perfect Salon
+        </h1>
+        <p className="text-[16px] text-center max-w-2xl">
+          Discover and book appointments with top beauty professionals in your
+          area
+        </p>
+        <Link href="/discover">
+          <Button rightIcon={<FaChevronRight />}>Start Booking</Button>
+        </Link>
+      </div>
     </div>
   );
 }
