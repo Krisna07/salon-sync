@@ -1,8 +1,8 @@
 "use client";
 import BFormInput from "@/components/business/BFormInput";
-import React from "react";
+import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const options = [
     "Details",
     "Contact",
@@ -11,7 +11,7 @@ const page = () => {
     "Staff",
     "Gallery",
   ];
-  const [businessDetails, setBusinessDetails] = React.useState({
+  const [businessDetails, setBusinessDetails] = useState({
     businessName: "",
     businessDescription: "",
     businessType: "",
@@ -26,7 +26,7 @@ const page = () => {
     businessZipCode: "",
   });
 
-  const onchange = (e) => {
+  const onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBusinessDetails({ ...businessDetails, [e.target.name]: e.target.value });
   };
 
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
