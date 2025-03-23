@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <nav className="sticky top-0 w-full bg-primary/80 backdrop-blur-md shadow-[0_0_2px_0_white] z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="md:flex grid items-center justify-between h-16">
           <Link href="/" className="text-xl font-semibold">
             SalonSync
           </Link>
